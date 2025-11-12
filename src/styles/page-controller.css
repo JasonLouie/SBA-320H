@@ -1,0 +1,101 @@
+.page-control-container {
+    width: 100%;
+    text-align: center;
+}
+
+.page-controls {
+    margin: auto;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+}
+
+.page-num, .page-direction-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    text-decoration: none;
+    color: black;
+    height: 40px;
+    border: none;
+    border-top: 2px solid gray;
+    border-bottom: 2px solid gray;
+    font-family: inherit;
+    font-size: 16px;
+}
+
+.page-num {
+    text-decoration: none;
+    color: black;
+    width: 40px;
+    height: 40px;
+}
+
+.page-direction-btn {
+    padding: 0 8px;
+}
+
+.page-num:not(:disabled):hover, .page-direction-btn:not(:disabled):hover {
+    background-color: #ddd;
+}
+
+.page-direction-btn.prev {
+    border-radius: 10px 0 0 10px;
+    border-left: 2px solid gray;
+    padding-left: 25px;
+}
+
+.prev, .next {
+    position: relative;
+}
+
+.prev::after, .prev::before {
+    content: "";
+    position: absolute;
+    left: 13px;
+    background-color: black;
+    height: 10px;
+    width: 3px;
+}
+
+.prev::after {
+    top: 12.5px;
+    rotate: 45deg;
+}
+
+.prev::before {
+    bottom: 8.5px;
+    rotate: 135deg;
+}
+
+.next::after, .next::before {
+    content: "";
+    position: absolute;
+    right: 13px;
+    background-color: black;
+    height: 10px;
+    width: 3px;
+}
+
+.next::after {
+    bottom: 8.5px;
+    rotate: 45deg;
+}
+
+.next::before {
+    top: 12.5px;
+    rotate: 135deg;
+}
+
+.page-direction-btn.next {
+    border-radius: 0 10px 10px 0;
+    border-right: 2px solid gray;
+    padding-right: 25px;
+}
+
+.current {
+    font-weight: bolder;
+}

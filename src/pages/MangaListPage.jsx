@@ -1,40 +1,46 @@
 import { useEffect, useState } from "react";
-import { Outlet } from "react-router";
+import { Outlet, useLocation } from "react-router";
 import { getMangaList } from "../apicalls";
 import MangaResult from "../components/MangaResult";
-import Button from "../components/Button";
+import PageController from "../components/PageController";
 
 export default function MangaListPage() {
-    const [page, setPage] = useState(1);
+    // New logic for initial setting page: Retrieve the current page count in the url
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+    const page = Number(queryParams.get("page")) || 1;
+
+    const [maxPages, setMaxPages] = useState(null);
     const [mangaList, setMangaList] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         async function initialize() {
-            const list = await getMangaList();
+            const [list, max] = await getMangaList(page);
+            if (max < page) {
+                setLoading(true);
+                return;
+            }
             setMangaList(list);
+            setMaxPages(max);
             setLoading(false);
         }
 
         try {
             initialize();
-            
+
         } catch (err) {
             console.error(err);
 
         }
-    }, [])
+    }, [page]);
 
-    const loaded = () => mangaList.length > 0 ? 
+    
+
+    const loaded = () => mangaList.length > 0 ?
         <div className="manga-results">
-            {mangaList.map(m => <MangaResult key={m.id} {...m}/>)}
-            <div className="page-control">
-                <Button classList="page-prev" path={`/manga?page=${page-1}`}>Previous</Button>
-                <Button classList={`page-num ${page%3 === 0 ? "current" : ""}`} path="/manga">1</Button>
-                <Button classList={`page-num ${page%3 === 1 ? "current" : ""}`} path="/manga?page=2">2</Button>
-                <Button classList={`page-num ${page%3 === 2 ? "current" : ""}`} path="/manga?page=3">3</Button>
-                <Button classList="page-next" path={`/manga?page=${page+1}`}>Next</Button>
-            </div>
+            {mangaList.map(m => <MangaResult key={m.id} {...m} />)}
+            <PageController page={page} maxPages={maxPages} />
         </div>
         : <h2>No manga found.</h2>
 

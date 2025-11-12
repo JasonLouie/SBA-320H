@@ -29,7 +29,7 @@ axios.interceptors.response.use(function onFullfilled(response) {
 // By default, show top manga
 export async function getMangaList(page=1) {
     const response = await axios.get(`/manga?type=manga&min_score=8&order_by=favorites&sfw&sort=desc&limit=24&page=${page}`);
-    return filterMangaList(response.data.data);
+    return filterMangaList(response.data);
 }
 
 export async function getMangaInfo(mangaId) {
