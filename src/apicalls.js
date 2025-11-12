@@ -1,3 +1,6 @@
+import axios from "axios";
+import { filterMangaList } from "./utils/manga";
+
 // Using axios to do calls
 axios.defaults.headers.common['Content-Type'] = "application/json";
 
@@ -25,8 +28,8 @@ axios.interceptors.response.use(function onFullfilled(response) {
 
 // By default, show top manga
 export async function getMangaList(page=1) {
-    const response = await axios.get(`/manga?type=manga&min_score=8&order_by=favorites&sfw&sort=desc&page=${page}`);
-    return response.data;
+    const response = await axios.get(`/manga?type=manga&min_score=8&order_by=favorites&sfw&sort=desc&limit=24&page=${page}`);
+    return filterMangaList(response.data.data);
 }
 
 export async function getMangaInfo(mangaId) {
@@ -35,7 +38,7 @@ export async function getMangaInfo(mangaId) {
 }
 
 export async function getMangaCharacters(mangaId) {
-    const response = await axios.get(`/manga/${mangaId}/characters?limit=20`);
+    const response = await axios.get(`/manga/${mangaId}/characters`);
     return response.data;
 }
 
