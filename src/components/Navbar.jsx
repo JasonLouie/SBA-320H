@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router";
+import { Link } from "react-router";
 
 export default function Navbar({ top }) {
     return (
@@ -6,6 +6,7 @@ export default function Navbar({ top }) {
             <Link to="/" className={`${top ? "top" : "bottom"}-nav-link`}>MangaDB</Link>
             <Link to="/manga" className={`${top ? "top" : "bottom"}-nav-link`}>View Manga</Link>
             <Link to="/manga/search" className={`${top ? "top" : "bottom"}-nav-link`}>Search</Link>
+
         </nav>
     );
 }

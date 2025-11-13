@@ -2,8 +2,6 @@ import Button from "../components/Button";
 import "../styles/page-controller.css";
 
 export default function PageController({ page, maxPages, route }) {
-    console.log(route);
-    console.log(route.includes("?"));
     function createPageButtons(nums) {
         return (
             <>

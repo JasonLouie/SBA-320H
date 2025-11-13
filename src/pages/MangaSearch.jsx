@@ -8,9 +8,7 @@ export default function MangaSearch() {
 
     const [searchParams, setSearchParams] = useSearchParams();
     const query = searchParams.get("q") || "";
-    console.log(query);
     const page = Number(searchParams.get("page")) || 1;
-    console.log(page);
 
     const [maxPages, setMaxPages] = useState(null);
     const [mangaList, setMangaList] = useState(null);
@@ -33,8 +31,6 @@ export default function MangaSearch() {
         }
     }
 
-
-
     useEffect(() => {
         if (query) {
             handleSearch();
@@ -47,14 +43,12 @@ export default function MangaSearch() {
         } else if (mangaList.length === 0) {
             return <h2>No manga found.</h2>;
         }
-
         return (
             <div className="manga-results">
                 {mangaList.map(m => <MangaResult key={m.id} {...m} />)}
                 <PageController page={page} maxPages={maxPages} route={`/manga/search?q=${input}`} />
             </div>
         );
-
     }
 
     return (

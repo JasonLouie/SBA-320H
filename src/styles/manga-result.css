@@ -33,12 +33,13 @@
     inset: 0;
     height: 350px;
     width: calc(14000px/63);
-    background-color: #464646DD;
     border-radius: 12px;
     transition: opacity 0.3s ease;
+    padding: 5px;
 }
 
 .info {
+    margin: 0;
     color: white;
 }
 

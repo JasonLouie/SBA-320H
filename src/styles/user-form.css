@@ -1,0 +1,42 @@
+.form-container {
+    margin-bottom: 20px;
+}
+
+form {
+    margin: auto;
+    width: fit-content;
+}
+
+.form-name {
+    margin: 5px 0 20px 0;
+    text-align: center;
+}
+
+.form-text {
+    margin: 12px 0;
+    text-align: center;
+}
+
+.form-submit {
+    display: block;
+    margin: 20px auto;
+    height: 30px;
+}
+
+.form-span > a {
+    text-decoration: none;
+}
+
+a.login, h1.login {
+    color: blue;
+}
+
+a.signup, h1.signup {
+    color: orange;
+}
+
+.field {
+    display: block;
+    height: 25px;
+    width: 250px;
+}

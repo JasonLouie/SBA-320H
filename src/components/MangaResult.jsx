@@ -2,7 +2,7 @@ import { useState } from "react";
 import "../styles/manga-result.css";
 import { Link } from "react-router";
 
-export default function MangaResult({ id, title, img, status, published, score, genres }) {
+export default function MangaResult({ id, title, img }) {
 
     const [hidden, setHidden] = useState(true);
 
@@ -21,7 +21,7 @@ export default function MangaResult({ id, title, img, status, published, score, 
                 <img className="manga-img" src={img} alt={`Image of ${title}`} />
                 
                 <div className={`manga-info ${hidden ? "hidden" : ""}`}>
-                    <p className="info">Hello</p>
+                    
                 </div>
             </Link>
             <p className="title">{title}</p>
