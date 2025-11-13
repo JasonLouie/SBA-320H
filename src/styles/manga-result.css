@@ -7,7 +7,8 @@
 
 .manga {
     width: 230px;
-    height: 400px;
+    margin-bottom: 12px;
+    height: max-content;
     position: relative;
 }
 
@@ -34,7 +35,7 @@
     width: calc(14000px/63);
     background-color: #464646DD;
     border-radius: 12px;
-    transition: opacity 200ms ease;
+    transition: opacity 0.3s ease;
 }
 
 .info {

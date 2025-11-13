@@ -11,7 +11,7 @@ axios.interceptors.request.use(request => {
     request.metadata = request.metadata || {};
     request.metadata.start_time = new Date();
 
-    console.log(`Request started at: ${request.metadata.start_time.toLocaleTimeString("en-US")}`);
+    console.log(`Request sent at: ${request.metadata.start_time.toLocaleTimeString("en-US")}`);
     document.body.style.cursor = "progress";
     return request;
 });
@@ -27,8 +27,13 @@ axios.interceptors.response.use(function onFullfilled(response) {
 });
 
 // By default, show top manga
-export async function getMangaList(page=1) {
+export async function getMangaList(page) {
     const response = await axios.get(`/manga?type=manga&min_score=8&order_by=favorites&sfw&sort=desc&limit=24&page=${page}`);
+    return filterMangaList(response.data);
+}
+
+export async function searchManga(query, page) {
+    const response = await axios.get(`/manga?type=manga&order_by=favorites&sfw&sort=desc&limit=24&q=${query}&page=${page}`);
     return filterMangaList(response.data);
 }
 

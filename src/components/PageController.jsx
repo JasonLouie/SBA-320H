@@ -1,12 +1,13 @@
 import Button from "../components/Button";
 import "../styles/page-controller.css";
 
-export default function PageController({ page, maxPages }) {
-
+export default function PageController({ page, maxPages, route }) {
+    console.log(route);
+    console.log(route.includes("?"));
     function createPageButtons(nums) {
         return (
             <>
-                {nums.map(n => { if (n <= maxPages) return <Button key={n} disabled={n === page} classList={`page-num ${n === page ? "current" : ""}`} path={`/manga?page=${n}`}>{n}</Button> })}
+                {nums.map(n => { if (n <= maxPages) return <Button key={n} disabled={n === page} classList={`page-num ${n === page ? "current" : ""}`} path={`${route}${route.includes("?") ? "&" : "?"}page=${n}`}>{n}</Button> })}
             </>
         );
     }
@@ -25,9 +26,9 @@ export default function PageController({ page, maxPages }) {
     return (
         <div className="page-control-container">
             <div className="page-controls">
-                <Button disabled={page === 1} classList="page-direction-btn prev" path={`/manga?page=${page - 1}`}>Previous</Button>
+                <Button disabled={page === 1} classList="page-direction-btn prev" path={`${route}${route.includes("?") ? "&" : "?"}page=${page - 1}`}>Previous</Button>
                 {showPageNumbers()}
-                <Button disabled={page === maxPages} classList="page-direction-btn next" path={`/manga?page=${page + 1}`}>Next</Button>
+                <Button disabled={page === maxPages} classList="page-direction-btn next" path={`${route}${route.includes("?") ? "&" : "?"}page=${page + 1}`}>Next</Button>
             </div>
         </div>
     );
