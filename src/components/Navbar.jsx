@@ -11,7 +11,9 @@ export default function Navbar({ top }) {
             <Link to="/login" className="login">Login</Link> 
         </> : 
         <div>
-            <button className="logout-btn" onClick={() => dispatch({type: "LOGOUT"})}>Log Out</button> 
+            <button className="logout-btn" onClick={() => dispatch({type: "LOGOUT"})}>Log Out</button>
+            <Link to="/favorites">Favorite Manga</Link>
+            <Link to="/profile">Profile</Link>
         </div>;
 
     return (
