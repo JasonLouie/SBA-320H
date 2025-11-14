@@ -55,16 +55,20 @@ label.password {
     display: flex;
     justify-content: center;
     align-items: center;
-    bottom: 0;
-    right: 0;
+    right: 2px;
+    bottom: 4.5px;
     background-color: #00000000;
     border: none;
-    height: 25px;
+    height: 16px;
+    border-radius: 80%;
+    cursor: pointer;
 }
 
 .password-icon > img {
     object-fit: contain;
     height: 30px;
+    user-select: none;
+    overflow: hidden;
 }
 
 .hide::after {

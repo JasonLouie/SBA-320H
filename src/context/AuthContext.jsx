@@ -17,9 +17,9 @@ export default function AuthProvider({ children }) {
     useEffect(() => {
         if (state) {
             localStorage.setItem("user", JSON.stringify(state));
-        } else {
             // Update that user in the users key for localStorage
             updateUser(state);
+        } else {
             localStorage.removeItem("user");
         }
     }, [state]);

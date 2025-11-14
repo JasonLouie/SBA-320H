@@ -93,9 +93,21 @@ export function validateSignUp(user) {
 }
 
 export function validateLogin(username, password) {
+    const requiredErrors = {};
+    if (!username || !password) {
+        requiredErrors.username = ["Username and password are required."];
+    } else if (!username) {
+        requiredErrors.username = ["Username is required."];
+    }
+
+    if (Object.keys(requiredErrors).length > 0) {
+        return requiredErrors;
+    }
+
     const validations = {
         username: usernameRules,
         password: passwordRules
     };
-    validate(validations, {username, password});
+    const validationErrors = validate(validations, {username, password});
+    return Object.keys(validationErrors).length > 0 ? {username: ["Username or password incorrect."]} : {};
 }

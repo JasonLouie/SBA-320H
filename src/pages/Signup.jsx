@@ -1,9 +1,10 @@
-import { useContext, useEffect, useState } from "react";
+import { useState } from "react";
 import "../styles/user-form.css";
 import { Link, useNavigate } from "react-router";
 import { checkUnique, registerUser } from "../utils/auth";
 import { validateSignUp } from "../utils/validate";
 import { useAuth } from "../context/AuthContext";
+import Field from "../components/forms/Field";
 
 export default function Signup() {
     const { dispatch } = useAuth();
@@ -12,7 +13,6 @@ export default function Signup() {
 
     const [formErrors, setFormErrors] = useState({});
     const [formData, setFormData] = useState({ name: "", username: "", email: "", password: "", confirmPassword: "" });
-    const [showPassword, setShowPassword] = useState(false);
 
     const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -42,44 +42,16 @@ export default function Signup() {
         navigate("/profile");
     }
 
-    const showError = (field) => {
-        return <div className="errors">{formErrors[field].map((err, i) => <p key={`${field}-${i}`} className={`signup error ${field}`}>{err}</p>)}</div>;
-    }
-
-    useEffect(() => {
-        
-    }, [])
-
     return (
         <>
             <h1 className="signup form-name">Sign Up</h1>
             <div className="form-container">
-                <form onSubmit={handleSubmit} noValidate>
-                    <label htmlFor="name">
-                        Name
-                        <input className="signup field" type="text" name="name" id="name" value={formData.name} onChange={handleChange} />
-                    </label>
-                    {formErrors.name?.length > 0 && showError("name")}
-                    <label htmlFor="username">
-                        Username
-                        <input className="signup field" type="text" name="username" id="username" value={formData.username} onChange={handleChange} />
-                    </label>
-                    {formErrors.username?.length > 0 && showError("username")}
-                    <label htmlFor="email">
-                        Email
-                        <input className="signup field" type="email" name="email" id="email" value={formData.email} onChange={handleChange} />
-                    </label>
-                    {formErrors.email?.length > 0 && showError("email")}
-                    <label htmlFor="password" className="password">
-                        Password
-                        <input className="signup field password" type={showPassword ? "text" : "password"} name="password" id="password" value={formData.password} onChange={handleChange} />
-                        <button className={`password-icon ${showPassword ? "" : "hide"}`} type="button" onClick={() => setShowPassword(!showPassword)}><img src="/images/password-icon.png" alt="" /></button>
-                    </label>
-                    {formErrors.password?.length > 0 && showError("password")}
-                    <label htmlFor="confirmPassword">
-                        Confirm Password
-                        <input className="signup field" type="password" name="confirmPassword" id="confirmPassword" value={formData.confirmPassword} onChange={handleChange} />
-                    </label>
+                <form onSubmit={handleSubmit} noValidate={true}>
+                    <Field fieldName="Name" name="name" type="text" formData={formData} formErrors={formErrors} handleChange={handleChange} />
+                    <Field fieldName="Username" name="username" type="text" formData={formData} formErrors={formErrors} handleChange={handleChange} />
+                    <Field fieldName="Email" name="email" type="email" formData={formData} formErrors={formErrors} handleChange={handleChange} />
+                    <Field fieldName="Password" name="password" type="password" formData={formData} formErrors={formErrors} handleChange={handleChange} />
+                    <Field fieldName="Confirm Password" name="confirmPassword" type="password" formData={formData} formErrors={formErrors} handleChange={handleChange} />
                     <button type="submit" className="form-submit">Sign Up</button>
                 </form>
             </div>
