@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "../styles/user-form.css";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { validateCredentials } from "../utils/auth";
 import { useAuth } from "../context/AuthContext";
 
@@ -9,6 +9,7 @@ export default function Login() {
     const [formError, setFormError] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const { dispatch } = useAuth();
+    const navigate = useNavigate();
 
     const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 

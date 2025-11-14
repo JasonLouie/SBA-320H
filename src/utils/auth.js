@@ -4,7 +4,6 @@ export function validateCredentials(username, password) {
     if (!user) {
         return "Username or password incorrect.";
     }
-    updateUser(user); // Remember that the user just signed up
     return user;
 }
 
@@ -25,37 +24,22 @@ export function checkUnique(username, email) {
 }
 
 export function registerUser(user) {
-    // Add user if there aren't any errors with uniqueness
     const users = getAllUsers();
     const newUser = {id: users[users.length-1]?.id + 1 || 1, ...user, favorites: {}};
     users.push(newUser);
     updateUsers(users); // Save new user
-    updateUser(newUser); // Remember that the user just signed up
     return newUser;
 }
 
-export function addFavorite(id, manga) {
+export function updateUser(user) {
     const users = getAllUsers();
-    const user = users.find((u, i) => {
-        if (u.id === id){
-            users[i].favorites[manga.id] = manga;
+    users.find((u, i) => {
+        if (u.id === user.id){
+            users[i] = user;
             return true;
         }
     });
     updateUsers(users); // Save changes to localStorage
-    return user;
-}
-
-export function removeFavorite(id, mangaId) {
-    const users = getAllUsers();
-    const user = users.find((u, i) => {
-        if (u.id === id){
-            delete users[i].favorites[mangaId];
-            return true;
-        }
-    });
-    updateUsers(users); // Save changes to localStorage
-    return user;
 }
 
 function getAllUsers() {
