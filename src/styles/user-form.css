@@ -2,7 +2,7 @@
     margin-bottom: 20px;
 }
 
-form {
+.form-container > form {
     margin: auto;
     width: fit-content;
 }
@@ -38,5 +38,50 @@ a.signup, h1.signup {
 .field {
     display: block;
     height: 25px;
-    width: 250px;
+    width: 300px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+label.password {
+    position: relative;
+}
+
+.password-icon {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+    right: 0;
+    background-color: #00000000;
+    border: none;
+    height: 25px;
+}
+
+.password-icon > img {
+    object-fit: contain;
+    height: 30px;
+}
+
+.hide::after {
+    position: absolute;
+    content: "";
+    background-color: #555;
+    height: 22px;
+    width: 2px;
+    rotate: 45deg;
+}
+
+.errors {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.error {
+    color: red;
+    margin: 0;
 }

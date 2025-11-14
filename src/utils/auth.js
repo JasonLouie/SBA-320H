@@ -4,10 +4,11 @@ export function validateCredentials(username, password) {
     if (!user) {
         return "Username or password incorrect.";
     }
+    updateUser(user); // Remember that the user just signed up
     return user;
 }
 
-function validateRegistration(email, username) {
+export function checkUnique(username, email) {
     const errors = {};
     const users = getAllUsers();
     const usernameExists = users.find(u => u.username === username);
@@ -24,17 +25,13 @@ function validateRegistration(email, username) {
 }
 
 export function registerUser(user) {
-    const errors = validateRegistration(user.email, user.username);
-    console.log(errors);
-    if (Object.keys(errors).length > 0) {
-        console.log("Errors detected!");
-        return {errors};
-    }
-    console.log("No errors detected! Adding user...");
     // Add user if there aren't any errors with uniqueness
     const users = getAllUsers();
-    users.push(user);
+    const newUser = {id: users[users.length-1]?.id + 1 || 1, ...user, favorites: {}};
+    users.push(newUser);
     updateUsers(users); // Save new user
+    updateUser(newUser); // Remember that the user just signed up
+    return newUser;
 }
 
 export function addFavorite(id, manga) {
@@ -42,8 +39,8 @@ export function addFavorite(id, manga) {
     const user = users.find((u, i) => {
         if (u.id === id){
             users[i].favorites[manga.id] = manga;
+            return true;
         }
-        return true;
     });
     updateUsers(users); // Save changes to localStorage
     return user;
@@ -54,8 +51,8 @@ export function removeFavorite(id, mangaId) {
     const user = users.find((u, i) => {
         if (u.id === id){
             delete users[i].favorites[mangaId];
+            return true;
         }
-        return true;
     });
     updateUsers(users); // Save changes to localStorage
     return user;
@@ -63,11 +60,9 @@ export function removeFavorite(id, mangaId) {
 
 function getAllUsers() {
     const users = JSON.parse(localStorage.getItem("users")) || [];
-    console.log(users);
     return users;
 }
 
 function updateUsers(newUsers) {
     localStorage.setItem("users", JSON.stringify(newUsers));
-    console.log(localStorage);
 }

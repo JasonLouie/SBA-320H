@@ -25,6 +25,10 @@ export default function MangaSearch() {
         if (input) {
             setLoading(true);
             const [results, max] = await searchManga(input, page);
+            if (max < page) {
+                setLoading(false);
+                return;
+            }
             setMangaList(results);
             setMaxPages(max);
             setLoading(false);
