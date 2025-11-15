@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { searchManga } from "../utils/apicalls";
+import { searchManga } from "../utils/apiCalls";
 import { useSearchParams } from "react-router";
 import "../styles/search.css";
 import MangaResult from "../components/manga/MangaResult";
 import PageController from "../components/PageController";
 import Button from "../components/Button";
+import { useHeading } from "../context/HeadingContext";
 
 export default function MangaSearch() {
 
@@ -37,6 +38,12 @@ export default function MangaSearch() {
 
     }
 
+    const { setHeading } = useHeading();
+
+    useEffect(() => {
+        setHeading("");
+    }, []);
+
     useEffect(() => {
         if (query) {
             handleSearch();
@@ -62,7 +69,7 @@ export default function MangaSearch() {
 
     return (
         <>
-            <h1>Manga Search Page</h1>
+            <h1>Search for Manga</h1>
             <form className="manga-search" onSubmit={handleSubmit}>
                 <input type="text" className="search" name="search" id="search" placeholder="Search Manga" value={input} onChange={(e) => setInput(e.target.value)} />
                 <Button type="submit" className="search-btn" disabled={loading || !input}>Search</Button>

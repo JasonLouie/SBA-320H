@@ -3,8 +3,10 @@ import { useLocation } from "react-router";
 import { useAuth } from "../context/AuthContext";
 import MangaResult from "../components/manga/MangaResult";
 import PageController from "../components/PageController";
+import { useHeading } from "../context/HeadingContext";
 
 export default function MangaFavorites() {
+    const { setHeading } = useHeading();
     const { state } = useAuth();
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
@@ -21,6 +23,10 @@ export default function MangaFavorites() {
         : <h2 className="message">You don't have any favorites yet. Start exploring and click the heart on any manga to favorite it!</h2>
 
     useEffect(() => {
+        setHeading("Favorite Manga");
+    }, []);
+
+    useEffect(() => {
         if (state) {
             setMangaIds(getMangaIds());
         }
@@ -28,7 +34,6 @@ export default function MangaFavorites() {
 
     return (
         <>
-            <h1>Favorite Manga</h1>
             {loaded()}
         </>
     );

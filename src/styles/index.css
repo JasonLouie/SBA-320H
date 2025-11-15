@@ -16,6 +16,14 @@ header {
     width: 100%;
 }
 
+.page-heading {
+    margin: 0;
+    margin-bottom: 10px;
+    text-align: center;
+    background-color: #aaaaaa;
+    padding: 8px 0;
+}
+
 .top-nav {
     height: 60px;
     display: flex;
@@ -102,6 +110,7 @@ header {
     display: flex;
     flex-wrap: wrap;
     width: 140px;
+    z-index: 2;
 }
 
 .user-menu-element {

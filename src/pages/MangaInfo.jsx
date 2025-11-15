@@ -1,10 +1,20 @@
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
-import { getMangaInfo } from "../utils/apicalls";
+import { getMangaInfo } from "../utils/apiCalls";
+import Info from "../components/manga/Info";
+import Sidebar from "../components/manga/Sidebar";
+import "../styles/mangaInfo.css";
+import { useHeading } from "../context/HeadingContext";
 
 export default function MangaInfo() {
     const { id } = useParams();
     const [manga, setManga] = useState(null);
+
+    const { setHeading } = useHeading();
+
+    useEffect(() => {
+        setHeading(manga?.title || "");
+    }, [manga]);
 
     useEffect(() => {
         async function getInfo() {
@@ -27,7 +37,6 @@ export default function MangaInfo() {
 
     return (
         <>
-            <h1>{manga ? manga.title : "Info on Manga"}</h1>
             {manga ? loaded() : <h2 className="message">Loading manga info...</h2>}
         </>
     );

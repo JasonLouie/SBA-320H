@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router";
-import { getMangaList } from "../utils/apicalls";
+import { getMangaList } from "../utils/apiCalls";
 import MangaResult from "../components/manga/MangaResult";
 import PageController from "../components/PageController";
+import { useHeading } from "../context/HeadingContext";
 
 export default function MangaListPage() {
     const location = useLocation();
@@ -12,6 +13,12 @@ export default function MangaListPage() {
     const [maxPages, setMaxPages] = useState(null);
     const [mangaList, setMangaList] = useState([]);
     const [loading, setLoading] = useState(true);
+
+    const { setHeading } = useHeading();
+
+    useEffect(() => {
+        setHeading("List of Popular Manga");
+    }, []);
 
     useEffect(() => {
         async function getPopularManga() {
@@ -39,7 +46,6 @@ export default function MangaListPage() {
 
     return (
         <>
-            <h1>List of Popular Manga</h1>
             {loading ? <h2>Retrieving manga...</h2> : loaded()}
             <Outlet />
         </>

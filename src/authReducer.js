@@ -5,13 +5,12 @@ export default function authReducer(state, action) {
         case "LOGOUT":
             return null;
         case "ADD_FAVORITE": {
-            const {manga} = action.payload;
-            return {...state, favorites: {...state.favorites, [manga.id]: manga}};
+            const {id, title, img} = action.payload;
+            return {...state, favorites: {...state.favorites, [id]: {id, title, img}}};
         }
         case "REMOVE_FAVORITE": {
-            const {manga} = action.payload;
             const newState = {...state};
-            delete newState.favorites[manga.id];
+            delete newState.favorites[action.payload.id];
             return newState;
         }
         default:

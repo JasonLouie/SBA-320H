@@ -1,7 +1,15 @@
+import { useEffect } from "react";
+import { useHeading } from "../context/HeadingContext";
+
 export default function Profile() {
+    const { setHeading } = useHeading();
+
+    useEffect(() => {
+        setHeading("Profile");
+    }, []);
     return (
         <>
-            <h1>Profile</h1>
+            <p>Details</p>
         </>
     );
 }
