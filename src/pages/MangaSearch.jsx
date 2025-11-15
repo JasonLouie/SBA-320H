@@ -31,7 +31,6 @@ export default function MangaSearch() {
             setMaxPages(max);
         } catch (err) {
             setMangaList([]);
-            setMaxPages(0);
         } finally {
             setLoading(false);
         }
@@ -72,7 +71,7 @@ export default function MangaSearch() {
             <h1>Search for Manga</h1>
             <form className="manga-search" onSubmit={handleSubmit}>
                 <input type="text" className="search" name="search" id="search" placeholder="Search Manga" value={input} onChange={(e) => setInput(e.target.value)} />
-                <Button type="submit" className="search-btn" disabled={loading || !input}>Search</Button>
+                <Button type="submit" className="search-btn icon" disabled={loading}><span className="icon"></span></Button>
             </form>
             {loading ? <h2>Retrieving manga...</h2> : loaded()}
         </>

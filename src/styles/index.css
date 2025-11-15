@@ -52,10 +52,6 @@ header {
     margin-left: 0;
 }
 
-.top-nav-link:first-child::after {
-    display: none;
-}
-
 .link {
     text-decoration: none;
     color: inherit;

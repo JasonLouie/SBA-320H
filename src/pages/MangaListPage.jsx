@@ -31,7 +31,6 @@ export default function MangaListPage() {
                 console.log(err);
             } finally {
                 setLoading(false);
-                setMaxPages(0);
             }
         }
         getPopularManga();
