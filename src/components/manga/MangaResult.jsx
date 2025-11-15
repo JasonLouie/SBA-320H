@@ -1,7 +1,7 @@
 import { useState } from "react";
-import "../styles/mangaResult.css";
+import "../../styles/mangaResult.css";
 import { Link } from "react-router";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 
 export default function MangaResult({ id, title, img }) {
 

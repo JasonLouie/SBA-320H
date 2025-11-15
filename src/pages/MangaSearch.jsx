@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { searchManga } from "../utils/apicalls";
 import { useSearchParams } from "react-router";
 import "../styles/search.css";
-import MangaResult from "../components/MangaResult";
+import MangaResult from "../components/manga/MangaResult";
 import PageController from "../components/PageController";
 import Button from "../components/Button";
 
@@ -12,36 +12,39 @@ export default function MangaSearch() {
     const query = searchParams.get("q") || "";
     const page = Number(searchParams.get("page")) || 1;
 
+    const [input, setInput] = useState(query);
     const [maxPages, setMaxPages] = useState(null);
     const [mangaList, setMangaList] = useState(null);
     const [loading, setLoading] = useState(false);
-    const [input, setInput] = useState(query);
 
     async function handleSubmit(e) {
         e.preventDefault();
         if (input) setSearchParams({ q: input, page: 1 });
-        await handleSearch();
     }
 
     async function handleSearch() {
-        if (input) {
-            setLoading(true);
-            const [results, max] = await searchManga(input, page);
-            if (max < page) {
-                setLoading(false);
-                return;
-            }
+        setLoading(true);
+        try {
+            const [results, max] = await searchManga(query, page);
             setMangaList(results);
             setMaxPages(max);
+        } catch (err) {
+            setMangaList([]);
+            setMaxPages(0);
+        } finally {
             setLoading(false);
         }
+
     }
 
     useEffect(() => {
         if (query) {
             handleSearch();
+        } else {
+            setInput("");
+            setMangaList(null);
         }
-    }, [page]);
+    }, [query, page]);
 
     function loaded() {
         if (!mangaList) {
@@ -52,7 +55,7 @@ export default function MangaSearch() {
         return (
             <div className="manga-results">
                 {mangaList.map(m => <MangaResult key={m.id} {...m} />)}
-                <PageController page={page} maxPages={maxPages} route={`/manga/search?q=${input}`} />
+                <PageController page={page} maxPages={maxPages} route={`/manga/search?q=${query}`} />
             </div>
         );
     }
@@ -62,7 +65,7 @@ export default function MangaSearch() {
             <h1>Manga Search Page</h1>
             <form className="manga-search" onSubmit={handleSubmit}>
                 <input type="text" className="search" name="search" id="search" placeholder="Search Manga" value={input} onChange={(e) => setInput(e.target.value)} />
-                <Button type="submit" className="search-btn">Search</Button>
+                <Button type="submit" className="search-btn" disabled={loading || !input}>Search</Button>
             </form>
             {loading ? <h2>Retrieving manga...</h2> : loaded()}
         </>

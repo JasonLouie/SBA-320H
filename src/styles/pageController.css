@@ -34,6 +34,21 @@
     height: 40px;
 }
 
+.page-num.dots {
+    position: relative;
+}
+
+.dots::before {
+    content: "";
+    position: absolute;
+    bottom: 13px;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background-color: black;
+    box-shadow: -10px 0 0 black, 10px 0 0 black;
+}
+
 .page-direction-btn {
     padding: 0 8px;
 }
@@ -98,4 +113,5 @@
 
 .current {
     font-weight: bolder;
+    border: 2px solid black;
 }

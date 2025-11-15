@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import { useAuth } from "../context/AuthContext";
-import MangaResult from "../components/MangaResult";
+import MangaResult from "../components/manga/MangaResult";
 import PageController from "../components/PageController";
 
 export default function MangaFavorites() {

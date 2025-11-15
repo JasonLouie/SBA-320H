@@ -59,6 +59,10 @@ header {
     cursor: pointer;
 }
 
+.button:disabled {
+    cursor: default;
+}
+
 .hidden {
     opacity: 0;
 }

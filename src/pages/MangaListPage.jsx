@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router";
 import { getMangaList } from "../utils/apicalls";
-import MangaResult from "../components/MangaResult";
+import MangaResult from "../components/manga/MangaResult";
 import PageController from "../components/PageController";
 
 export default function MangaListPage() {
@@ -14,25 +14,20 @@ export default function MangaListPage() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        async function initialize() {
+        async function getPopularManga() {
             setLoading(true);
-            const [list, max] = await getMangaList(page);
-            if (max < page) {
+            try {
+                const [list, max] = await getMangaList(page);
+                setMangaList(list);
+                setMaxPages(max);
+            } catch (err) {
+                console.log(err);
+            } finally {
                 setLoading(false);
-                return;
+                setMaxPages(0);
             }
-            setMangaList(list);
-            setMaxPages(max);
-            setLoading(false);
         }
-
-        try {
-            initialize();
-
-        } catch (err) {
-            console.error(err);
-
-        }
+        getPopularManga();
     }, [page]);
 
     const loaded = () => mangaList.length > 0 ?
