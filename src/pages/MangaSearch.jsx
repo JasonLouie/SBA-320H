@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { searchManga } from "../apicalls";
 import { useSearchParams } from "react-router";
+import "../styles/search.css";
 import MangaResult from "../components/MangaResult";
 import PageController from "../components/PageController";
+import Button from "../components/Button";
 
 export default function MangaSearch() {
 
@@ -17,7 +19,7 @@ export default function MangaSearch() {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        setSearchParams({q: input, page: 1});
+        if (input) setSearchParams({ q: input, page: 1 });
         await handleSearch();
     }
 
@@ -43,9 +45,9 @@ export default function MangaSearch() {
 
     function loaded() {
         if (!mangaList) {
-            return <h2>Type something into the search bar to start searching!</h2>
+            return <h2 className="message">Type something into the search bar to start searching!</h2>
         } else if (mangaList.length === 0) {
-            return <h2>No manga found.</h2>;
+            return <h2 className="message">No manga found.</h2>;
         }
         return (
             <div className="manga-results">
@@ -58,12 +60,10 @@ export default function MangaSearch() {
     return (
         <>
             <h1>Manga Search Page</h1>
-            <div>
-                <form className="manga-search" onSubmit={handleSubmit}>
-                    <input type="text" name="search" id="search" placeholder="Search Manga" value={input} onChange={(e) => setInput(e.target.value)} />
-                    <button type="submit">Search</button>
-                </form>
-            </div>
+            <form className="manga-search" onSubmit={handleSubmit}>
+                <input type="text" className="search" name="search" id="search" placeholder="Search Manga" value={input} onChange={(e) => setInput(e.target.value)} />
+                <Button type="submit" className="search-btn">Search</Button>
+            </form>
             {loading ? <h2>Retrieving manga...</h2> : loaded()}
         </>
     );

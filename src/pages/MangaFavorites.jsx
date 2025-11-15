@@ -18,7 +18,7 @@ export default function MangaFavorites() {
             {mangaIds.map(m => <MangaResult key={m} {...state.favorites[m]} />)}
             <PageController page={page} maxPages={Math.ceil(Object.keys(state.favorites).length / 24)} route="/favorites" />
         </div>
-        : <h2>No manga found.</h2>
+        : <h2 className="message">You don't have any favorites yet. Start exploring and click the heart on any manga to favorite it!</h2>
 
     useEffect(() => {
         if (state) {

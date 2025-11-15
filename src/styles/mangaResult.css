@@ -2,19 +2,19 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 3px;
+    gap: 12px 6px;
 }
 
 .manga {
-    width: 230px;
-    margin-bottom: 12px;
+    width: 200px;
     height: max-content;
     position: relative;
 }
 
 .manga-img {
     width: inherit;
-    height: 350px;
+    margin: 0 auto;
+    height: 315px;
     object-fit: fill;
     aspect-ratio: 40/63;
     border-radius: 12px;
@@ -30,6 +30,7 @@
 
 .heart {
     position: absolute;
+    top: 2px;
     right: 10px;
     border-radius: 50%;
     transition: opacity 0.3s ease;
@@ -43,8 +44,4 @@
 .info {
     margin: 0;
     color: white;
-}
-
-.hidden {
-    opacity: 0;
 }

@@ -2,6 +2,8 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ddd;
+    min-height: 100vh;
     margin: 0;
 }
 
@@ -18,8 +20,10 @@ header {
     height: 60px;
     display: flex;
     color: white;
-    width: 90%;
-    margin: auto;
+}
+
+.content, .top-nav, .bottom-nav {
+    padding: 0 min(2em, 8%);
 }
 
 .top-nav-link {
@@ -44,17 +48,78 @@ header {
     display: none;
 }
 
-nav > a {
+.link {
     text-decoration: none;
     color: inherit;
 }
 
+.button {
+    font-family: inherit;
+    border: none;
+    cursor: pointer;
+}
+
+.hidden {
+    opacity: 0;
+}
+
+.nav-container {
+    display: flex;
+    column-gap: 10px;
+    margin: auto 0;
+    margin-left: auto;
+}
+
+.show-menu-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    background-color: #333;
+    border-radius: 50%;
+    height: 45px;
+    width: 45px;
+    border: 1px solid #555;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.profile-pic {
+    height: 30px;
+    width: auto;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+}
+
+.user-menu {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    display: flex;
+    flex-wrap: wrap;
+    width: 140px;
+}
+
+.user-menu-element {
+    width: inherit;
+    height: 30px;
+    color: white;
+    font-size: 15px;
+    border-bottom: 1px solid #777;
+    text-align: left;
+    background-color: #444;
+    padding: 4px 0;
+    padding-left: 8px;
+}
+
+.user-menu-element:hover {
+    background-color: #555;
+}
+
 main {
-    background-color: #ddd;
     width: 100%;
 }
 
-.content {
-    width: 90%;
-    margin: auto;
+.message {
+    font-weight: 400;
 }

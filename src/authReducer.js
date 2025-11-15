@@ -3,6 +3,7 @@ export default function authReducer(state, action) {
         case "LOGIN": // Successful login or signup
             return action.payload;
         case "LOGOUT":
+            console.log("Logging out...");
             return null;
         case "ADD_FAVORITE": {
             const {manga} = action.payload;

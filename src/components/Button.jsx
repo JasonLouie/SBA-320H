@@ -1,9 +1,9 @@
 import { Link } from "react-router";
 
-export default function Button({classList, children, path, disabled, type}) {
+export default function Button({className, children, path, disabled, type, onClick}) {
     return (
         <>
-            {disabled || type ? <button className={classList} type={type || "button"}disabled={disabled}>{children}</button> : <Link className={classList} to={path}>{children}</Link>}
+            {disabled || type || !path ? <button className={`button ${className}`} type={type || "button"} disabled={disabled} onClick={onClick}>{children}</button> : <Link className={`link ${className}`} to={path} onClick={onClick}>{children}</Link>}
         </>
     );
 }

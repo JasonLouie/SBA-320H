@@ -1,42 +1,29 @@
-import { useNavigate } from "react-router";
 import { useAuth } from "../context/AuthContext";
-import defaultPicture from "/images/profile.png";
 import Button from "./Button";
+import UserMenu from "./UserMenu";
 
 export default function Navbar({ top }) {
 
-    const { state, dispatch } = useAuth();
-    const navigate = useNavigate();
+    const { state } = useAuth();
 
-    function handleLogout() {
-        dispatch({ type: "LOGOUT" });
-        navigate("/login");
-    }
 
-    function showUserMenu() {
-
-    }
-
-    const loggedIn = () =>
-        <div>
-            <Button onClick={showUserMenu} classList="user-menu"><img src={defaultPicture} className="profile-pic" alt="Default picture" /></Button>
-            <Button classList="logout-btn" onClick={handleLogout}>Log Out</Button>
-            <Button path="/favorites">Favorite Manga</Button>
-            <Button path="/profile">Profile</Button>
-        </div>;
-
-    const showLoginSignUp = () => !state ?
-        <>
-            <Button path="/signup" classList="signup">Sign Up</Button>
-            <Button path="/login" classList="login">Login</Button>
-        </> :
-        loggedIn();
+    const showLoginSignUp = () =>
+        <div className="nav-container">
+            {!state ?
+                <>
+                    <Button path="/login" className="login">Login</Button>
+                    <Button path="/signup" className="signup">Sign Up</Button>
+                </>
+                :
+                <UserMenu />
+            }
+        </div>
 
     return (
         <nav className={`${top ? "top" : "bottom"}-nav`}>
-            <Button path="/" classList={`${top ? "top" : "bottom"}-nav-link`}>MangaDB</Button>
-            <Button path="/manga" classList={`${top ? "top" : "bottom"}-nav-link`}>View Manga</Button>
-            <Button path="/manga/search" classList={`${top ? "top" : "bottom"}-nav-link`}>Search</Button>
+            <Button path="/" className={`${top ? "top" : "bottom"}-nav-link`}>MangaDB</Button>
+            <Button path="/manga" className={`${top ? "top" : "bottom"}-nav-link`}>View Manga</Button>
+            <Button path="/manga/search" className={`${top ? "top" : "bottom"}-nav-link`}>Search</Button>
             {top && showLoginSignUp()}
         </nav>
     );

@@ -1,3 +1,4 @@
+import Button from "./Button";
 import passwordIcon from "/images/password-icon.png";
 
 export default function PasswordIcon({setShowPassword, showPassword}) {
@@ -8,8 +9,8 @@ export default function PasswordIcon({setShowPassword, showPassword}) {
     }
 
     return (
-        <button type="button" className={`password-icon ${showPassword ? "" : "hide"}`} onClick={handleClick}>
+        <Button className={`password-icon ${showPassword ? "" : "hide"}`} onClick={handleClick}>
             <img src={passwordIcon} alt="Password icon" />
-        </button>
+        </Button>
     );
 }

@@ -12,7 +12,7 @@ export default function App() {
                 <Main>
                     <AppRoutes />
                 </Main>
-                <Footer />
+                {/* <Footer /> */}
             </AuthProvider>
         </>
     );

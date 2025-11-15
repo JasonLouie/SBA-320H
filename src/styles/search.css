@@ -1,0 +1,23 @@
+.manga-search {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search, .search-btn {
+    padding-left: 7px;
+    height: 30px;
+    border: 1px solid gray;
+}
+
+.search {
+    border-radius: 6px 0 0 6px;
+    width: 100%;
+}
+
+.search-btn {
+    font-family: inherit;
+    border-radius: 0 6px 6px 0;
+    cursor: pointer;
+}

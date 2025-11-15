@@ -20,6 +20,7 @@ export default function AuthProvider({ children }) {
             // Update that user in the users key for localStorage
             updateUser(state);
         } else {
+            
             localStorage.removeItem("user");
         }
     }, [state]);
