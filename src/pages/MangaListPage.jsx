@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router";
-import { getMangaList } from "../apicalls";
+import { getMangaList } from "../utils/apicalls";
 import MangaResult from "../components/MangaResult";
 import PageController from "../components/PageController";
 

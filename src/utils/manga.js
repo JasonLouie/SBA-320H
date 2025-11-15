@@ -16,7 +16,7 @@ export function filterMangaList(mangaList) {
 export function filterMangaInfo(manga) {
     const mangaInfo = {
         id: manga.mal_id,
-        title: manga.title_english || m.title,
+        title: manga.title_english || manga.title,
         img: manga.images.jpg.image_url,
         status: manga.status,
         published: manga.published.string,

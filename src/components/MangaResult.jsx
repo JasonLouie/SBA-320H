@@ -18,7 +18,7 @@ export default function MangaResult({ id, title, img }) {
     function handleFavorite(e) {
         e.stopPropagation();
         e.preventDefault();
-        dispatch({type: !state.favorites[id] ? "ADD_FAVORITE" : "REMOVE_FAVORITE", payload: {manga: {id, title, img}}})
+        dispatch({type: !state.favorites[id] ? "ADD_FAVORITE" : "REMOVE_FAVORITE", payload: {manga: {id, title, img}}});
     }
 
     // Manga that is not complete have null chapters and volumes

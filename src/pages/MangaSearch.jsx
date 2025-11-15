@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { searchManga } from "../apicalls";
+import { searchManga } from "../utils/apicalls";
 import { useSearchParams } from "react-router";
 import "../styles/search.css";
 import MangaResult from "../components/MangaResult";
