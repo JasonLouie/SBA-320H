@@ -1,5 +1,5 @@
 import Button from "../components/Button";
-import "../styles/page-controller.css";
+import "../styles/pageController.css";
 
 export default function PageController({ page, maxPages, route }) {
     function createPageButtons(nums) {

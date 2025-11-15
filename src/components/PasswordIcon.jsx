@@ -8,7 +8,7 @@ export default function PasswordIcon({setShowPassword, showPassword}) {
     }
 
     return (
-        <button className={`password-icon ${showPassword ? "" : "hide"}`} onClick={handleClick}>
+        <button type="button" className={`password-icon ${showPassword ? "" : "hide"}`} onClick={handleClick}>
             <img src={passwordIcon} alt="Password icon" />
         </button>
     );

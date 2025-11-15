@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../styles/manga-result.css";
+import "../styles/mangaResult.css";
 import { Link } from "react-router";
 import { useAuth } from "../context/AuthContext";
 

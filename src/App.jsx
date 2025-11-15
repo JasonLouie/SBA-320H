@@ -1,6 +1,6 @@
 import Footer from './components/Footer';
 import Header from './components/Header';
-import AuthProvider, { useAuth } from './context/AuthContext';
+import AuthProvider from './context/AuthContext';
 import Main from './components/Main';
 import AppRoutes from './AppRoutes';
 

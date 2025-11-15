@@ -44,16 +44,6 @@ header {
     display: none;
 }
 
-.top-nav-link::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    margin: auto 0;
-    width: 1px;
-    height: 90%;
-    background: linear-gradient(#e66465, #9198e5);
-}
-
 nav > a {
     text-decoration: none;
     color: inherit;
@@ -67,5 +57,4 @@ main {
 .content {
     width: 90%;
     margin: auto;
-    border: 2px solid turquoise;
 }

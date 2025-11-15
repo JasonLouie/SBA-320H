@@ -95,7 +95,7 @@ export function validateSignUp(user) {
 export function validateLogin(username, password) {
     const requiredErrors = {};
     if (!username || !password) {
-        requiredErrors.username = ["Username and password are required."];
+        requiredErrors.username = ["Both username and password are required."];
     } else if (!username) {
         requiredErrors.username = ["Username is required."];
     }
