@@ -16,12 +16,14 @@ export default function UserMenu() {
     }
 
     const closeMenu = (e) => {
-        if (!divRef.current.contains(e.target)) setHidden(true);
+        if (divRef.current && !divRef.current.contains(e.target)) setHidden(true);
     }
 
     useEffect(() => {
         if (!hidden && divRef.current) document.body.addEventListener("click", closeMenu);
         else document.body.removeEventListener("click", closeMenu);
+        // Clean up for logging out
+        return () => document.body.removeEventListener("click", closeMenu);
     }, [hidden]);
 
     return (

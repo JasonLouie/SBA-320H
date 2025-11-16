@@ -25,7 +25,6 @@ export default function Login() {
         }
 
         const result = validateCredentials(username, password);
-        console.log(result);
         if ("id" in result) {
             dispatch({ type: "LOGIN", payload: result });
             navigate("/profile");

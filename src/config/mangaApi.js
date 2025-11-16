@@ -22,7 +22,7 @@ mangaApi.interceptors.response.use(function onFullfilled(response) {
 
     // Calculate how long the request took
     const timeElapsed = new Date().getTime() - response.config.metadata.start_time.getTime();
-    console.log(`Request took ${timeElapsed} ms.`);
+    // console.log(`Request took ${timeElapsed} ms.`);
     return response;
 });
 
