@@ -1,0 +1,21 @@
+.profile {
+    width: fit-content;
+    margin: auto;
+}
+
+.profile-pic.large {
+    height: 120px;
+    padding: 18px;
+}
+
+.profile-pic-container {
+    margin: auto;
+    background-color: #333;
+    border-radius: 50%;
+    height: max-content;
+    width: max-content;
+}
+
+.profile-field {
+    font-weight: 350;
+}
