@@ -7,7 +7,7 @@ export default function Sidebar({ manga }) {
 
     return (
         <div className="sidebar">
-            <img src={manga.img} alt="" />
+            <img className="manga-info-img" src={manga.img} alt={`Image of ${manga.title}`} />
             {state && <Button className="info-favorite-btn" onClick={() => dispatch({ type: !state.favorites[manga.id] ? "ADD_FAVORITE" : "REMOVE_FAVORITE", payload: { id: manga.id, title: manga.title, img: manga.img } })}>{`${state.favorites[manga.id] ? "Remove from" : "Add to"} Favorites`}</Button>}
             <Details title="Information">
                 {["score", "status", "published", "type", "chapters", "volumes"].map(key => <p key={key} className="detail">{`${key[0].toUpperCase() + key.slice(1)}: ${manga[key]}`}</p>)}

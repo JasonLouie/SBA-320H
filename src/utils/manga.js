@@ -28,5 +28,14 @@ export function filterMangaInfo(manga) {
     }
 }
 
+export function filterRecommendedManga(mangaList) {
+    const length = mangaList.length > 30 ? 30 : mangaList.length;
+    return mangaList.slice(0, length).map(m => ({
+        id: m.entry.mal_id,
+        title: m.entry.title,
+        img: m.entry.images.jpg.image_url
+    }));
+}
+
 
 // Filters API response for ...

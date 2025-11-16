@@ -1,17 +1,17 @@
 import { useState } from "react";
 import "../../styles/mangaResult.css";
-import { Link } from "react-router";
 import { useAuth } from "../../context/AuthContext";
+import Button from "../Button";
 
 export default function MangaResult({ id, title, img }) {
 
     const {state, dispatch} = useAuth();
     const [hidden, setHidden] = useState(true);
 
-    function handleMangaInfo(e, value) {
+    function toggleHeart(e) {
         e.stopPropagation();
         if (e.currentTarget.contains(e.target)) {
-            setHidden(value);
+            setHidden(e.type === "mouseleave");
         }
     }
 
@@ -24,10 +24,10 @@ export default function MangaResult({ id, title, img }) {
     // Manga that is not complete have null chapters and volumes
     return (
         <div className="manga">
-            <Link to={`/manga/${id}`} onMouseEnter={(e) => handleMangaInfo(e, false)} onMouseLeave={(e) => handleMangaInfo(e, true)}>
+            <Button path={`/manga/${id}`} toggle={toggleHeart} >
                 <img className="manga-img" src={img} alt={`Image of ${title}`} />
                 {state && <img className={`heart ${hidden ? "hidden" : ""}`} src={`/images/${!state.favorites[id] ? "not-" : ""}favorite.png`} alt="heart" onClick={handleFavorite}/>}
-            </Link>
+            </Button>
             <p className="title">{title}</p>
         </div>
     );

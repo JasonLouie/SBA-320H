@@ -1,5 +1,5 @@
 import mangaApi from "../config/mangaApi";
-import { filterMangaInfo, filterMangaList } from "./manga";
+import { filterMangaInfo, filterMangaList, filterRecommendedManga } from "./manga";
 
 // By default, show top manga
 export async function getMangaList(page) {
@@ -23,6 +23,6 @@ export async function getMangaCharacters(mangaId) {
 }
 
 export async function getMangaRecommendations(mangaId) {
-    const response = await mangaApi.get(`/manga/${mangaId}/recommendations?limit=5`);
-    return filterMangaList(response.data);
+    const response = await mangaApi.get(`/manga/${mangaId}/recommendations`);
+    return filterRecommendedManga(response.data.data);
 }

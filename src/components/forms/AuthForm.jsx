@@ -1,7 +1,14 @@
+import { useEffect } from "react";
+import { useHeading } from "../../context/HeadingContext";
 import "../../styles/authForm.css";
 import Button from "../Button";
 
 export default function AuthForm({ children, title, type, handleSubmit }) {
+    const { setHeading } = useHeading();
+
+    useEffect(() => {
+        setHeading("");
+    }, []);
     return (
         <>
             <h1 className={`${type} form-name`}>{title}</h1>

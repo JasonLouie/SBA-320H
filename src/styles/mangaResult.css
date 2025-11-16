@@ -15,7 +15,7 @@
     width: inherit;
     margin: 0 auto;
     height: 315px;
-    object-fit: fill;
+    object-fit: cover;
     aspect-ratio: 40/63;
     border-radius: 12px;
 }
@@ -30,8 +30,8 @@
 
 .heart {
     position: absolute;
-    top: 2px;
-    right: 10px;
+    top: 4px;
+    right: 4px;
     border-radius: 50%;
     transition: opacity 0.3s ease;
     width: 40px;

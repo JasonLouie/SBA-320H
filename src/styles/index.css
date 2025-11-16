@@ -24,6 +24,16 @@ header {
     padding: 8px 0;
 }
 
+.auth-btn {
+    background-color: #333;
+    padding: 8px 12px;
+    border-radius: 10px;
+}
+
+.auth-btn:hover {
+    background-color: #282828;
+}
+
 .top-nav {
     height: 60px;
     display: flex;

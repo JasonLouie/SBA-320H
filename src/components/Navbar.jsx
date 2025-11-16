@@ -11,8 +11,8 @@ export default function Navbar({ top }) {
         <div className="nav-container">
             {!state ?
                 <>
-                    <Button path="/login" className="login">Login</Button>
-                    <Button path="/signup" className="signup">Sign Up</Button>
+                    <Button path="/login" className="login auth-btn">Login</Button>
+                    <Button path="/signup" className="signup auth-btn">Sign Up</Button>
                 </>
                 :
                 <UserMenu />
