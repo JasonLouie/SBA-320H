@@ -1,4 +1,4 @@
-import Button from "./Button";
+import Button from "../Button";
 import passwordIcon from "/images/password-icon.png";
 
 export default function PasswordIcon({setShowPassword, showPassword}) {

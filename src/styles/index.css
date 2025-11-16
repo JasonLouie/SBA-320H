@@ -1,5 +1,3 @@
-
-
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #ddd;
@@ -16,6 +14,13 @@ header {
     width: 100%;
 }
 
+footer {
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    column-gap: 20px;
+}
+
 .page-heading {
     margin: 0;
     margin-bottom: 10px;
@@ -24,42 +29,8 @@ header {
     padding: 8px 0;
 }
 
-.auth-btn {
-    background-color: #333;
-    padding: 8px 12px;
-    border-radius: 10px;
-}
-
-.auth-btn:hover {
-    background-color: #282828;
-}
-
-.top-nav {
-    height: 60px;
-    display: flex;
-    color: white;
-}
-
 .content, .top-nav, .bottom-nav {
     padding: 0 min(2em, 8%);
-}
-
-.top-nav-link {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: inherit;
-    font-size: 24px;
-    position: relative;
-    padding: 0 8px;
-}
-
-.top-nav-link:hover {
-    background-color: #444;
-}
-
-.top-nav-link:first-child {
-    margin-left: 0;
 }
 
 .link {
@@ -79,60 +50,6 @@ header {
 
 .hidden {
     opacity: 0;
-}
-
-.nav-container {
-    display: flex;
-    column-gap: 10px;
-    margin: auto 0;
-    margin-left: auto;
-}
-
-.show-menu-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    background-color: #333;
-    border-radius: 50%;
-    height: 45px;
-    width: 45px;
-    border: 1px solid #555;
-    cursor: pointer;
-    overflow: hidden;
-}
-
-.profile-pic {
-    height: 30px;
-    width: auto;
-    aspect-ratio: 1/1;
-    object-fit: contain;
-}
-
-.user-menu {
-    position: absolute;
-    top: 60px;
-    right: 0;
-    display: flex;
-    flex-wrap: wrap;
-    width: 140px;
-    z-index: 2;
-}
-
-.user-menu-element {
-    width: inherit;
-    height: 30px;
-    color: white;
-    font-size: 15px;
-    border-bottom: 1px solid #777;
-    text-align: left;
-    background-color: #444;
-    padding: 4px 0;
-    padding-left: 8px;
-}
-
-.user-menu-element:hover {
-    background-color: #555;
 }
 
 main {

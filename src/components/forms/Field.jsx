@@ -1,5 +1,5 @@
 import { useState } from "react";
-import PasswordIcon from "../PasswordIcon";
+import PasswordIcon from "./PasswordIcon";
 import FieldErrors from "./FieldErrors";
 
 export default function Field({ fieldName, name, handleChange, formData, formErrors, type }) {
