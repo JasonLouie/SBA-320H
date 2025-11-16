@@ -21,6 +21,7 @@ export default function MangaSearch() {
     async function handleSubmit(e) {
         e.preventDefault();
         if (input) setSearchParams({ q: input, page: 1 });
+        else setSearchParams({});
     }
 
     async function handleSearch() {
@@ -47,7 +48,6 @@ export default function MangaSearch() {
         if (query) {
             handleSearch();
         } else {
-            setInput("");
             setMangaList(null);
         }
     }, [query, page]);

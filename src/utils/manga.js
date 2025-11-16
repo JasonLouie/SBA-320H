@@ -36,6 +36,3 @@ export function filterRecommendedManga(mangaList) {
         img: m.entry.images.jpg.image_url
     }));
 }
-
-
-// Filters API response for ...
