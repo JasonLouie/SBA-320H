@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Details from "./Details";
 import MangaRecommend from "./MangaRecommend";
 import { getMangaRecommendations } from "../../utils/apiCalls";
@@ -6,6 +6,7 @@ import Button from "../Button";
 
 export default function Recommendations({ id }) {
     const [mangaList, setMangaList] = useState(null);
+    const [overflow, setOverflow] = useState(false);
     const containerRef = useRef(null);
     const scrollLength = 600;
 
@@ -17,6 +18,24 @@ export default function Recommendations({ id }) {
             });
         }
     }
+
+    // Check for overflow in the manga container
+    useLayoutEffect(() => {
+        if (!containerRef.current) return;
+        const container = containerRef.current;
+
+        function checkOverflow() {
+            setOverflow(container.scrollWidth > container.clientWidth);
+        }
+
+        checkOverflow();
+
+        window.addEventListener("resize", checkOverflow);
+
+        return () => {
+            window.removeEventListener("resize", checkOverflow);
+        }
+    }, [mangaList]);
 
     useEffect(() => {
         async function getRecommendations() {
@@ -38,11 +57,15 @@ export default function Recommendations({ id }) {
 
     return (
         <Details title="Recommended Manga" className="recommended">
-            <Button className="carousel-btn carousel-next" onClick={() => slide(true)}><span className="arrow arrow-next"></span></Button>
-            <Button className="carousel-btn carousel-prev" onClick={() => slide(false)}><span className="arrow arrow-prev"></span></Button>
+            {overflow &&
+                <>
+                    <Button className="carousel-btn carousel-next" onClick={() => slide(true)}><span className="arrow arrow-next"></span></Button>
+                    <Button className="carousel-btn carousel-prev" onClick={() => slide(false)}><span className="arrow arrow-prev"></span></Button>
+                </>
+            }
             <div className="manga-container" ref={containerRef}>
                 {mangaList ? loaded() : <h2 className="message">Finding recommendations...</h2>}
             </div>
         </Details>
-    )
+    );
 }
