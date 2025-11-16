@@ -6,13 +6,15 @@ import Sidebar from "../components/manga/Sidebar";
 import "../styles/mangaInfo.css";
 import { useHeading } from "../context/HeadingContext";
 import Recommended from "../components/manga/Recommendations";
+import useDocumentTitle from "../context/useDocumentTitle";
 
 export default function MangaInfo() {
     const { id } = useParams();
     const [manga, setManga] = useState({});
     const [loading, setLoading] = useState(true);
-
     const { setHeading } = useHeading();
+
+    useDocumentTitle(`${manga.title}`);
 
     useEffect(() => {
         setHeading(manga?.title || "");

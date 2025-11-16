@@ -4,6 +4,7 @@ import { useAuth } from "../context/AuthContext";
 import MangaResult from "../components/manga/MangaResult";
 import PageController from "../components/PageController";
 import { useHeading } from "../context/HeadingContext";
+import useDocumentTitle from "../context/useDocumentTitle";
 
 export default function MangaFavorites() {
     const { setHeading } = useHeading();
@@ -13,6 +14,7 @@ export default function MangaFavorites() {
     const page = Number(queryParams.get("page")) || 1;
     const getMangaIds = () => Object.keys(state.favorites).slice(24 * (page - 1), 24 * page);
     const [mangaIds, setMangaIds] = useState(getMangaIds());
+    useDocumentTitle(`${state.username}'s Favorites`);
 
 
     const loaded = () => mangaIds.length > 0 ?

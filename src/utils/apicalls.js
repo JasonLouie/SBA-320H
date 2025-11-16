@@ -1,14 +1,18 @@
 import mangaApi from "../config/mangaApi";
 import { filterMangaInfo, filterMangaList, filterRecommendedManga } from "./manga";
 
-// By default, show top manga
-export async function getMangaList(page) {
-    const response = await mangaApi.get(`/manga?min_score=8&order_by=favorites&sfw&sort=desc&limit=24&page=${page}`);
+export async function getTopFive() {
+    const response = await mangaApi.get(`/manga?min_score=8&order_by=popularity&sfw&limit=5`);
+    return filterMangaList(response.data);
+}
+
+export async function getTopManga(page) {
+    const response = await mangaApi.get(`/manga?min_score=8&order_by=popularity&sfw&limit=24&page=${page}`);
     return filterMangaList(response.data);
 }
 
 export async function searchManga(query, page) {
-    const response = await mangaApi.get(`/manga?min_score=5&order_by=favorites&sfw&sort=desc&limit=24&q=${query}&page=${page}`);
+    const response = await mangaApi.get(`/manga?order_by=title&sfw&sort=desc&limit=24&q=${query}&page=${page}`);
     return filterMangaList(response.data);
 }
 

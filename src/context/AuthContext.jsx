@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
-import authReducer from "../authReducer";
+import authReducer from "../hooks/authReducer";
 import { updateUser } from "../utils/auth";
 
 const AuthContext = createContext();

@@ -5,12 +5,20 @@ import { useAuth } from "../context/AuthContext";
 import Field from "../components/forms/Field";
 import { validateLogin } from "../utils/validate";
 import AuthForm from "../components/forms/AuthForm";
+import { useHeading } from "../context/HeadingContext";
 
 export default function Login() {
+    useDocumentTitle("Login");
     const [formData, setFormData] = useState({ username: "", password: "" });
     const [formErrors, setFormErrors] = useState({});
     const { dispatch } = useAuth();
     const navigate = useNavigate();
+
+    const { setHeading } = useHeading();
+
+    useEffect(() => {
+        setHeading("");
+    }, []);
 
     const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 

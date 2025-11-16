@@ -6,9 +6,10 @@ import MangaResult from "../components/manga/MangaResult";
 import PageController from "../components/PageController";
 import Button from "../components/Button";
 import { useHeading } from "../context/HeadingContext";
+import useDocumentTitle from "../context/useDocumentTitle";
 
 export default function MangaSearch() {
-
+    useDocumentTitle("Search");
     const [searchParams, setSearchParams] = useSearchParams();
     const query = searchParams.get("q") || "";
     const page = Number(searchParams.get("page")) || 1;

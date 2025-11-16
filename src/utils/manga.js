@@ -1,12 +1,13 @@
 // Functions to filter out data from API calls
 
-// Filters API response for the top 25 anime to display for the /manga route
-export function filterMangaList(mangaList) {
-    return [mangaList.data.map(m => ({
+// Filters API response for general manga queries (homepage top 5, top manga, and search) and returns the filtered list and max pages
+export function filterMangaList(mangaList, pages=true) {
+    const filteredMangaList = mangaList.data.map(m => ({
         id: m.mal_id,
         title: m.title_english || m.title,
         img: m.images.jpg.image_url
-    })), mangaList.pagination.last_visible_page];
+    }))
+    return pages ? [filteredMangaList, mangaList.pagination.last_visible_page] : filteredMangaList;
 }
 
 // Filters API response for the particular anime to display for the /manga/:id route
@@ -28,6 +29,7 @@ export function filterMangaInfo(manga) {
     }
 }
 
+// Filters out at most 30 manga from the recommended list
 export function filterRecommendedManga(mangaList) {
     const length = mangaList.length > 30 ? 30 : mangaList.length;
     return mangaList.slice(0, length).map(m => ({

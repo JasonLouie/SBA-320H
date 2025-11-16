@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Home from './pages/Home';
-import MangaListPage from './pages/MangaListPage';
+import TopManga from './pages/TopManga';
 import MangaSearch from './pages/MangaSearch';
 import MangaInfo from './pages/MangaInfo';
 import MangaFavorites from './pages/MangaFavorites';
@@ -16,7 +16,7 @@ export default function AppRoutes() {
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="manga">
-                <Route index element={<MangaListPage />} />
+                <Route index element={<TopManga />} />
                 <Route path="search" element={<MangaSearch />} />
                 <Route path=":id" element={<MangaInfo />} />
             </Route>

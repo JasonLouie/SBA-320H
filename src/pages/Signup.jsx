@@ -1,18 +1,24 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { registerUser } from "../utils/auth";
 import { validateSignUp } from "../utils/validate";
 import { useAuth } from "../context/AuthContext";
 import Field from "../components/forms/Field";
 import AuthForm from "../components/forms/AuthForm";
+import { useHeading } from "../context/HeadingContext";
+import useDocumentTitle from "../context/useDocumentTitle";
 
 export default function Signup() {
-    const { dispatch } = useAuth();
-
-    const navigate = useNavigate();
-
+    useDocumentTitle("Sign Up");
     const [formErrors, setFormErrors] = useState({});
     const [formData, setFormData] = useState({ name: "", username: "", email: "", password: "", confirmPassword: "" });
+    const { dispatch } = useAuth();
+    const { setHeading } = useHeading();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        setHeading("");
+    }, []);
 
     const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 

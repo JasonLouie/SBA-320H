@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router";
-import { getMangaList } from "../utils/apiCalls";
+import { getTopManga } from "../utils/apiCalls";
 import MangaResult from "../components/manga/MangaResult";
 import PageController from "../components/PageController";
 import { useHeading } from "../context/HeadingContext";
+import useDocumentTitle from "../context/useDocumentTitle";
 
-export default function MangaListPage() {
+export default function TopManga() {
+    useDocumentTitle("Top Manga");
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const page = Number(queryParams.get("page")) || 1;
@@ -17,14 +19,14 @@ export default function MangaListPage() {
     const { setHeading } = useHeading();
 
     useEffect(() => {
-        setHeading("List of Popular Manga");
+        setHeading("Top Manga");
     }, []);
 
     useEffect(() => {
         async function getPopularManga() {
             setLoading(true);
             try {
-                const [list, max] = await getMangaList(page);
+                const [list, max] = await getTopManga(page);
                 setMangaList(list);
                 setMaxPages(max);
             } catch (err) {
