@@ -10,6 +10,10 @@ A responsive web application built with React, designed to be a one-stop-shop fo
 
 - Browse & Discover: Explore thousands of titles, including manga, novels, light novels, oneshots, doujin, manhwa, and manhua.
 
+- Sticky Navbar: The navigation bar is fixed and stays with the user as they scroll.
+
+- Anchored Footer: The footer is anchored to the bottom of the page, ensuring a professional layout.
+
 - Detailed Information: View a dedicated page for any title with its summary, genres, score, and other details.
 
 - User Favorites: Create an account to save and manage a list of your favorite manga.
@@ -59,16 +63,18 @@ This project features a complete, front-end-only authentication system. This app
 
 | Path | Component (Example) | Description | Access Control |
 | --- | --- | --- | --- |
-| `/` | `HomePage` | Displays the application's home page. | Public |
-| `/manga` | `TopMangaPage` | Displays a paginated list of top-rated manga. | Public |
-| `/manga/search` | `SearchPage` | Displays the search page and paginated results. | Public |
-| `/manga/:id` | `MangaDetailsPage` | Shows detailed information (status, score, genres, etc.) and recommendations for a single manga. | Public |
-| `/login` | `LoginPage` | Displays the sign-in form. | **Guest Only** (Not accessible if signed in) |
-| `/signup` | `SignupPage` | Displays the account creation form. | **Guest Only** (Not accessible if signed in) |
-| `/profile` | `ProfilePage` | Displays the logged-in user's profile (name, username, email, and favorite count). | **Private** (Requires sign-in) |
-| `/favorites` | `FavoritesPage` | Displays all the user's favorited manga. (Data is pulled from `localStorage` to avoid API calls). | **Private** (Requires sign-in) |
-| `*` | `NoMatchPage` | Catches any invalid URL and displays a "404 Page Not Found" error. | Public |
+| `/` | `Home` | Displays the application's home page. | Public |
+| `/manga` | `TopManga` | Displays a paginated list of top-rated manga. | Public |
+| `/manga/search` | `Search` | Displays the search page and paginated results. | Public |
+| `/manga/:id` | `MangaInfo` | Shows detailed information (status, score, genres, etc.) and recommendations for a single manga. | Public |
+| `/login` | `Login` | Displays the login form. | **Guest Only** (Not accessible if signed in) |
+| `/signup` | `Signup` | Displays the signup form. | **Guest Only** (Not accessible if signed in) |
+| `/profile` | `Profile` | Displays the logged-in user's profile (name, username, email, and favorite count). | **Private** (Requires sign-in) |
+| `/favorites` | `MangaFavorites` | Displays all the user's favorited manga. (Data is pulled from `localStorage` to avoid API calls). | **Private** (Requires sign-in) |
+| `*` | `NoMatch` | Catches any invalid URL and displays a "404 Page Not Found" error. | Public |
 
 ## Acknowledgements
 
-This project was made possible by the free [Jikan API](https://jikan.moe/). This README file was partially generated using AI to help summarize key features and points.
+- This project was made possible by the free [Jikan API](https://jikan.moe/).
+
+- This README file was partially generated using AI to help summarize key features and points. All application functionality was created by myself/referencing the docs or online tutorials as needed.
