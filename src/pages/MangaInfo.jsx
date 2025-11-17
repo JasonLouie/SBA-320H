@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
-import { getMangaInfo } from "../utils/apiCalls";
+
 import Info from "../components/manga/Info";
 import Sidebar from "../components/manga/Sidebar";
 import "../styles/mangaInfo.css";
