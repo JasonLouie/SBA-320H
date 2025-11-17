@@ -1,0 +1,136 @@
+.flex {
+    display: flex;
+}
+
+.carousel {
+    position: relative;
+}
+
+.carousel-item {
+    position: relative;
+}
+
+.carousel-item.small {
+    height: 200px;
+}
+
+.carousel-item.large {
+    height: 400px;
+}
+
+.img-link {
+    height: inherit;
+}
+
+.manga-container {
+    display: flex;
+    overflow-x: auto;
+    margin: 4px auto;
+    column-gap: 5px;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.max-content {
+    width: max-content;
+}
+
+.manga-container::-webkit-scrollbar {
+    display: none;
+}
+
+.manga-img-carousel {
+    width: inherit;
+    margin: 0 auto;
+    height: inherit;
+    object-fit: cover;
+    aspect-ratio: 40/63;
+    border-radius: 12px;
+}
+
+.img-container {
+    position: relative;
+}
+
+.title-container {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    border-radius: 12px;
+    background-color: #00000066;
+    position: absolute;
+}
+
+.recommendation-title {
+    text-align: center;
+    color: white;
+    padding: 4px;
+}
+
+.recommendation-title.large {
+    margin-top: 10px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 40px;
+    width: 40px;
+    background-color: #000000AA;
+    border-radius: 50%;
+    z-index: 20;
+}
+
+.carousel-btn:hover {
+    background-color: #000000CC;
+}
+
+.arrow {
+    display: block;
+    height: inherit;
+    position: relative;
+}
+
+.arrow::after, .arrow::before  {
+    position: absolute;
+    content: "";
+    width: 3px;
+    height: 14px;
+    background-color: #FFFFFFCC;
+}
+
+.arrow::after {
+    top: 9px;
+}
+
+.arrow::before {
+    bottom: 9px;
+}
+
+.arrow-next::after, .arrow-prev::before {
+    rotate: 45deg;
+}
+
+.arrow-next::before, .arrow-prev::after {
+    rotate: -45deg;
+}
+
+.arrow-next::after, .arrow-next::before {
+    left: 12px;
+}
+
+.arrow-prev::after, .arrow-prev::before {
+    right: 12px;
+}
+
+.carousel-next {
+    left: -12px;
+}
+
+.carousel-prev {
+    right: -12px;
+}

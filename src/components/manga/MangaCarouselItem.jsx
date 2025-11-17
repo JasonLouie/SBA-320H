@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Button from "../Button";
 
-export default function MangaRecommend({ id, title, img }) {
+export default function MangaCarouselItem({ id, title, img, size }) {
 
     const [hidden, setHidden] = useState(true);
 
@@ -13,11 +13,11 @@ export default function MangaRecommend({ id, title, img }) {
     }
 
     return (
-        <div className="manga-recommendation">
+        <div className={`carousel-item ${size}`}>
             <Button path={`/manga/${id}`} toggle={toggleMangaInfo} className="img-link">
-                <img className="manga-img small" src={img} alt={`Image of ${title}`} />
+                <img className={`manga-img-carousel`} src={img} alt={`Image of ${title}`} />
                 <div className={`title-container ${hidden ? "hidden" : ""}`} inert={hidden}>
-                    <p className="recommendation-title">{title}</p>
+                    <p className={`recommendation-title ${size === "large" && size}`}>{title}</p>
                 </div>
             </Button>
         </div>

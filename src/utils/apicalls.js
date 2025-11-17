@@ -3,7 +3,7 @@ import { filterMangaInfo, filterMangaList, filterRecommendedManga } from "./mang
 
 export async function getTopFive() {
     const response = await mangaApi.get(`/manga?min_score=8&order_by=popularity&sfw&limit=5`);
-    return filterMangaList(response.data);
+    return filterMangaList(response.data, false);
 }
 
 export async function getTopManga(page) {
