@@ -4,7 +4,7 @@ A responsive web application built with React, designed to be a one-stop-shop fo
 
 ## Link to Demo
 
-Link TBA...
+[Demo Link](https://manga-db-site.netlify.app/)
 
 ## Features
 
