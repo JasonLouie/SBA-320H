@@ -25,12 +25,22 @@
     border-radius: 10px;
 }
 
+a.login.auth-btn {
+    color: lightblue;
+}
+
 a.login, h1.login {
     color: blue;
 }
 
-a.signup, h1.signup {
+a.signup.auth-btn {
     color: orange;
+    font-weight: 400;
+}
+
+a.signup, h1.signup {
+    color: #f29327;
+    font-weight: 500;
 }
 
 .field {
