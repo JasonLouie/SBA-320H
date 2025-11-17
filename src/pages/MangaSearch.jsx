@@ -6,7 +6,7 @@ import MangaResult from "../components/manga/MangaResult";
 import PageController from "../components/PageController";
 import Button from "../components/Button";
 import { useHeading } from "../context/HeadingContext";
-import useDocumentTitle from "../context/useDocumentTitle";
+import useDocumentTitle from "../hooks/useDocumentTitle";
 
 export default function MangaSearch() {
     useDocumentTitle("Search");

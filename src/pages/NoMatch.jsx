@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useHeading } from "../context/HeadingContext";
-import useDocumentTitle from "../context/useDocumentTitle";
+import useDocumentTitle from "../hooks/useDocumentTitle";
 
 export default function NoMatch() {
     useDocumentTitle("404 Not Found");

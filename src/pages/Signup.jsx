@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { registerUser } from "../utils/auth";
 import { validateSignUp } from "../utils/validate";
@@ -6,7 +6,7 @@ import { useAuth } from "../context/AuthContext";
 import Field from "../components/forms/Field";
 import AuthForm from "../components/forms/AuthForm";
 import { useHeading } from "../context/HeadingContext";
-import useDocumentTitle from "../context/useDocumentTitle";
+import useDocumentTitle from "../hooks/useDocumentTitle";
 
 export default function Signup() {
     useDocumentTitle("Sign Up");

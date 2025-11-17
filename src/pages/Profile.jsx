@@ -3,7 +3,7 @@ import { useHeading } from "../context/HeadingContext";
 import { useAuth } from "../context/AuthContext";
 import defaultPicture from "/images/profile.png";
 import "../styles/profile.css";
-import useDocumentTitle from "../context/useDocumentTitle";
+import useDocumentTitle from "../hooks/useDocumentTitle";
 
 export default function Profile() {
     const { setHeading } = useHeading();

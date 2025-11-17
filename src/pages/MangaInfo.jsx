@@ -6,7 +6,7 @@ import Sidebar from "../components/manga/Sidebar";
 import "../styles/mangaInfo.css";
 import { useHeading } from "../context/HeadingContext";
 import Recommended from "../components/manga/Recommendations";
-import useDocumentTitle from "../context/useDocumentTitle";
+import useDocumentTitle from "../hooks/useDocumentTitle";
 
 export default function MangaInfo() {
     const { id } = useParams();
