@@ -25,15 +25,19 @@ export default function Signup() {
     function handleSubmit(e) {
         e.preventDefault();
 
+        const { name, password, confirmPassword } = formData;
+        const username = formData.username.toLowerCase();
+        const email = formData.email.toLowerCase();
+
         // Form validation
-        const validationErrors = validateSignUp(formData);
+        const validationErrors = validateSignUp({ name, username, email, password, confirmPassword });
         if (Object.keys(validationErrors).length > 0) {
             setFormErrors(validationErrors);
             return;
         }
 
         // Register user
-        const { name, username, email, password } = formData;
+        
         const result = registerUser({ name, username, email, password });
         if ("id" in result) { // Registration successful
             dispatch({ type: "LOGIN", payload: result });

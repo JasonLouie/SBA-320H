@@ -2,7 +2,7 @@ export function validateCredentials(username, password) {
     const users = getAllUsers();
     const user = users.find(u => u.username === username.toLowerCase() && u.password === password);
     if (!user) {
-        return [{username: "Username or password incorrect."}];
+        return {username: ["Username or password incorrect."]};
     }
     return user;
 }

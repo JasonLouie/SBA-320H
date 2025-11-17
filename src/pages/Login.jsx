@@ -32,12 +32,13 @@ export default function Login() {
             setFormErrors(validationErrors);
             return;
         }
-
+        console.log("Validating...");
         const result = validateCredentials(username, password);
         if ("id" in result) {
             dispatch({ type: "LOGIN", payload: result });
             navigate("/profile");
         } else {
+            console.log("Test");
             setFormErrors(result);
         }
     }
