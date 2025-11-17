@@ -16,7 +16,7 @@ export default function AuthForm({ children, title, type, handleSubmit }) {
                 <form onSubmit={handleSubmit} noValidate={true}>
                     {children}
                     <Button type="submit" className="form-submit">{title}</Button>
-                    <p className="form-text"><Button path={type === "login" ? "/signup" : "/login"} className={type === "login" ? "signup" : "login"}>{type === "login" ? "Already have an account?" : "Create new account"}</Button></p>
+                    <p className="form-text"><Button path={type === "login" ? "/signup" : "/login"} className={type === "login" ? "signup" : "login"}>{type === "signup" ? "Already have an account?" : "Create new account"}</Button></p>
                 </form>
             </div>
         </>
