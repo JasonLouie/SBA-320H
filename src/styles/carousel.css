@@ -25,6 +25,7 @@
 .manga-container {
     display: flex;
     overflow-x: auto;
+    overflow-y: hidden;
     margin: 4px auto;
     column-gap: 5px;
     scroll-behavior: smooth;

@@ -29,7 +29,7 @@ export default function UserMenu() {
     return (
         <>
             <p>Hello, {state.username}</p>
-            <div onClick={() => setHidden(!hidden) } ref={divRef}>
+            <div onClick={() => setHidden(!hidden) } ref={divRef} className="menu-container">
                 <Button className="show-menu-btn" ><img src={defaultPicture} className="profile-pic" alt="Default picture" /></Button>
                 <div inert={hidden} className={`user-menu ${hidden ? "hidden" : ""}`} >
                     <Button className="user-menu-element" path="/favorites">Favorite Manga</Button>

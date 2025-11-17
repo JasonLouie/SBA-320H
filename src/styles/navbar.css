@@ -40,6 +40,10 @@
     background-color: #282828;
 }
 
+.menu-container {
+    margin: auto;
+}
+
 .show-menu-btn {
     display: flex;
     justify-content: center;
